@@ -8,4 +8,4 @@ Gatling utilises asynchronous concurrency and IO, and by using a major language 
 Usage 
 
 To Run performance tests (eg:Smoke/Load/Stress/Soak), execute the following command:
-mvn gatling:execute -Dgatling.simulationClass=org.govscot.website.SmokeSimulation -DbaseUrl="https://pgvwww.beta.gov.scot"
+mvn gatling:execute -Dgatling.simulationClass=packagename.SmokeSimulation -DbaseUrl="testsiteUrl"
