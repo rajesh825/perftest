@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.gatling</groupId>
+    <artifactId>gatling-maven-plugin-demo</artifactId>
+    <version>2.1.7</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gatling.version>${project.version}</gatling.version>
+        <gatling-plugin.version>2.1.7</gatling-plugin.version>
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+
+                        <configuration>
+                            <jvmArgs>
+                                <jvmArg>-Xms4096m</jvmArg>
+                                <jvmArg>-Xmx4096m</jvmArg>
+                                <jvmArg>-XX:NewSize=1024m</jvmArg>
+                                <jvmArg>-XX:MaxNewSize=1024m</jvmArg>
+                                <jvmArg>-XX:MaxTenuringThreshold=2</jvmArg>
+                                <jvmArg>-XX:MaxPermSize=128m</jvmArg>
+                                <jvmArg>-XX:PermSize=64m</jvmArg>
+                                <jvmArg>-Xmn100M</jvmArg>
+                                <jvmArg>-Xss2M</jvmArg>
+                                <jvmArg>-XX:+UseThreadPriorities</jvmArg>
+                                <jvmArg>-XX:ThreadPriorityPolicy=42</jvmArg>
+                                <jvmArg>-XX:+AggressiveOpts</jvmArg>
+                                <jvmArg>-XX:+OptimizeStringConcat</jvmArg>
+                                <jvmArg>XX:+UseFastAccessorMethods</jvmArg>
+                                <jvmArg>-XX:+UseParNewGC</jvmArg>
+                                <jvmArg>-XX:+UseConcMarkSweepGC</jvmArg>
+                                <jvmArg>XX:+CMSParallelRemarkEnabled</jvmArg>
+                                <jvmArg>-XX:+CMSClassUnloadingEnabled</jvmArg>
+                                <jvmArg>-XX:SurvivorRatio=8</jvmArg>
+                                <jvmArg>-XX:CMSInitiatingOccupancyFraction=75</jvmArg>
+                                <jvmArg>-XX:+UseCMSInitiatingOccupancyOnly</jvmArg>
+                                <jvmArg>-Dsun.rmi.dgc.client.gcInterval=600000</jvmArg>
+                                <jvmArg>-Dsun.rmi.dgc.server.gcInterval=600000</jvmArg>
+                                <jvmArg> -XX:+HeapDumpOnOutOfMemoryError</jvmArg>
+                                <jvmArg>-XX:+PrintGCDateStamps</jvmArg>
+                                <jvmArg>-XX:+PrintGCTimeStamps</jvmArg>
+                                <jvmArg>-XX:+PrintGCDetails</jvmArg>
+                                <jvmArg>-XX:-UseGCLogFileRotation</jvmArg>
+
+                            </jvmArgs>
+                        </configuration>
+                    </execution>
+
+
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
+</project>
